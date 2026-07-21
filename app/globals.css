@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #f7f3ea;
+  --ink: #2b2820;
+}
+
+html {
+  /* Lenis controla el scroll; evitamos el smooth nativo que compite. */
+  scroll-behavior: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Bloquea el scroll mientras el sobre está cerrado. */
+body[data-intro-locked='true'] {
+  overflow: hidden;
+}
+
+@layer components {
+  /* Versalitas espaciadas encima de cada título de sección — la firma editorial. */
+  .overline {
+    @apply font-sans text-[0.7rem] uppercase tracking-overline text-olive-600;
+  }
+
+  .section {
+    @apply mx-auto w-full max-w-content px-6;
+  }
+
+  .divider {
+    @apply mx-auto h-px w-16 bg-olive-400/50;
+  }
+
+  /* Línea fina decorativa con un rombo al centro (papelería fina). */
+  .rule-diamond {
+    @apply relative flex items-center justify-center gap-3 text-olive-500;
+  }
+  .rule-diamond::before,
+  .rule-diamond::after {
+    content: '';
+    @apply h-px w-12 bg-olive-400/40;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
