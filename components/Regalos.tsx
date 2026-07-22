@@ -2,26 +2,16 @@
 
 import Image from 'next/image'
 import { BODA } from '@/lib/config'
-import { Words } from './useScrollFx'
 
 export default function Regalos() {
-  const { titulo, mensaje, url, ctaLabel } = BODA.regalos
+  const { mensaje, url } = BODA.regalos
 
   return (
-    <section className="section pb-[10px] pt-0 text-center" id="regalos">
-      <h2
-        className="font-serif text-[clamp(2rem,6vw,3.25rem)] font-light text-olive-800"
-        data-reveal-words
-      >
-        <Words text={titulo} />
-      </h2>
-
-      <div className="divider my-8" data-reveal />
-
-      {/* Tarjeta de papelería sellada. El wrapper lleva la perspectiva y el
-          data-reveal (GSAP anima su transform sin chocar con el tilt 3D, que
-          vive en la tarjeta interna). */}
-      <div className="mx-auto mt-4 max-w-md [perspective:1200px]" data-reveal>
+    <section className="section pb-24 pt-4 text-center" id="regalos">
+      {/* Tarjeta de papelería sellada + insignia circular "Regalos" (como la
+          referencia). El wrapper lleva la perspectiva y el data-reveal (GSAP
+          anima su transform sin chocar con el tilt 3D de la tarjeta interna). */}
+      <div className="relative mx-auto mt-4 max-w-md [perspective:1200px]" data-reveal>
         <div
           className="relative rounded-sm border border-olive-700/10 bg-cream px-8 pb-11 pt-16 [transform:rotateX(6deg)] sm:px-10"
           style={{
@@ -46,17 +36,21 @@ export default function Regalos() {
             {mensaje}
           </p>
         </div>
-      </div>
 
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-12 inline-block border border-olive-700 px-8 py-3 font-sans text-xs uppercase tracking-overline text-olive-700 transition-colors duration-300 hover:bg-olive-700 hover:text-cream"
-        data-reveal
-      >
-        {ctaLabel}
-      </a>
+        {/* Insignia circular "Regalos" en script — clickeable, lleva a la lista.
+            Baja y sobresale del borde inferior de la tarjeta. */}
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Ver nuestra lista de regalos"
+          className="absolute -bottom-16 right-2 z-10 flex h-28 w-28 items-center justify-center rounded-full bg-olive-800 shadow-[0_16px_34px_-8px_rgba(45,45,22,0.5)] transition-transform duration-300 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive-700 sm:right-6 sm:h-32 sm:w-32"
+        >
+          <span className="font-script text-4xl leading-none text-cream sm:text-5xl">
+            Regalos
+          </span>
+        </a>
+      </div>
     </section>
   )
 }

@@ -55,45 +55,71 @@ export default function Rsvp() {
   }
 
   return (
-    <section className="relative pb-6 pt-10" id="rsvp">
-      <div className="pointer-events-none absolute inset-0 bg-olive-50/60" />
-      <div className="section relative text-center">
-        <p className="mx-auto max-w-sm font-serif text-lg italic text-ink/70" data-reveal>
+    <section className="relative overflow-hidden pb-10 pt-14" id="rsvp">
+      <div className="pointer-events-none absolute inset-0 bg-olive-50/50" />
+
+      <div className="section relative">
+        <p
+          className="mx-auto max-w-sm text-center font-serif text-lg italic text-ink/70"
+          data-reveal
+        >
           Por favor confirma antes del {BODA.rsvpDeadline}.
         </p>
 
-        <div className="mt-12" data-reveal>
-          <AnimatePresence mode="wait">
-            {estado === 'confirmado' ? (
-              <motion.div
-                key="ok"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: EASE, delay: 0.15 }}
-                className="mx-auto max-w-md py-6"
-              >
-                <div className="rule-diamond mb-6" />
-                <p className="font-serif text-3xl font-light text-olive-800">
-                  {asiste ? '¡Gracias, ' : 'Te vamos a extrañar, '}
-                  {nombre.split(' ')[0]}!
-                </p>
-                <p className="mt-4 font-serif text-lg italic text-ink/70">
-                  {asiste
-                    ? `Nos vemos el ${BODA.diaCorto}. Guardamos ${asistentes} ${
-                        asistentes === 1 ? 'lugar' : 'lugares'
-                      } para ti.`
-                    : 'Gracias por avisarnos. Te tendremos presente ese día.'}
-                </p>
-                <div className="rule-diamond mt-8" />
-              </motion.div>
-            ) : (
-              <motion.form
-                key="form"
-                onSubmit={enviar}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4, ease: EASE }}
-                className="mx-auto flex max-w-md flex-col gap-7 text-left"
-              >
+        {/* Escena del sobre: pared interna (detrás) · carta · panel frontal (delante). */}
+        <div className="relative mx-auto mt-12 w-full max-w-[400px]" data-reveal>
+          {/* 1 · Pared interna del sobre, visible por la abertura en V */}
+          <svg
+            className="absolute inset-x-0 bottom-0 z-0 h-36 w-full"
+            viewBox="0 0 400 200"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <rect x="0" y="0" width="400" height="200" fill="#2f2d16" />
+          </svg>
+
+          {/* 2 · La carta emerge del sobre al entrar en viewport */}
+          <motion.div
+            initial={{ y: 54, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 1.1, ease: EASE }}
+            className="relative z-10 mx-auto w-[84%] rounded-[3px] border border-olive-200 bg-white px-6 pb-40 pt-7 shadow-[0_2px_6px_rgba(45,45,22,0.08),0_20px_44px_-16px_rgba(45,45,22,0.30)]"
+          >
+            <h3 className="mb-6 font-serif text-2xl font-light text-olive-800">
+              Confirmación de asistencia
+            </h3>
+            <AnimatePresence mode="wait">
+              {estado === 'confirmado' ? (
+                <motion.div
+                  key="ok"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease: EASE, delay: 0.15 }}
+                  className="py-2 text-center"
+                >
+                  <div className="rule-diamond mb-6" />
+                  <p className="font-serif text-3xl font-light text-olive-800">
+                    {asiste ? '¡Gracias, ' : 'Te vamos a extrañar, '}
+                    {nombre.split(' ')[0]}!
+                  </p>
+                  <p className="mt-4 font-serif text-lg italic text-ink/70">
+                    {asiste
+                      ? `Nos vemos el ${BODA.diaCorto}. Guardamos ${asistentes} ${
+                          asistentes === 1 ? 'lugar' : 'lugares'
+                        } para ti.`
+                      : 'Gracias por avisarnos. Te tendremos presente ese día.'}
+                  </p>
+                  <div className="rule-diamond mt-8" />
+                </motion.div>
+              ) : (
+                <motion.form
+                  key="form"
+                  onSubmit={enviar}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: EASE }}
+                  className="flex flex-col gap-7 text-left"
+                >
                 {/* Nombre */}
                 <label className="flex flex-col gap-2">
                   <span className="font-sans text-[0.65rem] uppercase tracking-overline text-olive-600">
@@ -215,9 +241,43 @@ export default function Rsvp() {
                 >
                   {estado === 'enviando' ? 'Enviando…' : 'Confirmar asistencia'}
                 </motion.button>
-              </motion.form>
-            )}
-          </AnimatePresence>
+                </motion.form>
+              )}
+            </AnimatePresence>
+          </motion.div>
+
+          {/* 3 · Panel frontal del sobre: tapa el borde inferior de la carta
+              (efecto "insertada"). La abertura en V deja ver la pared interna. */}
+          <svg
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-36 w-full"
+            viewBox="0 0 400 200"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="sobreFront" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stopColor="#65632f" />
+                <stop offset="1" stopColor="#403e22" />
+              </linearGradient>
+            </defs>
+            <path d="M0,60 L200,130 L400,60 L400,200 L0,200 Z" fill="url(#sobreFront)" />
+            <path
+              d="M0,60 L200,130 L400,60"
+              fill="none"
+              stroke="#403e22"
+              strokeWidth="2.5"
+              opacity="0.5"
+            />
+            <line
+              x1="200"
+              y1="130"
+              x2="200"
+              y2="200"
+              stroke="#403e22"
+              strokeWidth="1.5"
+              opacity="0.3"
+            />
+          </svg>
         </div>
       </div>
     </section>

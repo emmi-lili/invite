@@ -41,13 +41,13 @@ function Bloque({ valor, label }: { valor: number; label: string }) {
   // Pad mínimo a 2 dígitos, pero permite 3 (los días pueden ser >99).
   const s = String(valor).padStart(2, '0')
   return (
-    <div className="flex flex-1 flex-col items-center">
-      <span className="flex font-serif text-[clamp(1.75rem,10vw,4.5rem)] font-light leading-none text-olive-800">
+    <div className="flex flex-col items-center">
+      <span className="flex font-serif text-[clamp(2.75rem,16vw,5rem)] font-extralight leading-none text-olive-800">
         {s.split('').map((d, i) => (
           <Digito key={i} valor={d} />
         ))}
       </span>
-      <span className="mt-3 font-sans text-[0.6rem] uppercase tracking-[0.15em] text-olive-600 sm:text-[0.65rem] sm:tracking-overline">
+      <span className="mt-4 font-serif text-[0.62rem] uppercase tracking-[0.2em] text-olive-600 sm:text-[0.7rem]">
         {label}
       </span>
     </div>
@@ -72,30 +72,36 @@ export default function Countdown() {
 
   return (
     <section className="section py-16 text-center" id="countdown">
+      <p
+        className="font-script text-[clamp(2.1rem,9vw,2.9rem)] leading-none text-olive-700"
+        data-reveal
+      >
+        Faltan
+      </p>
+
       {llego ? (
         <p
-          className="font-serif text-4xl font-light italic text-olive-700"
+          className="mt-6 font-serif text-4xl font-light italic text-olive-700"
           data-reveal
         >
           ¡Hoy nos casamos!
         </p>
       ) : (
         <div
-          className="mx-auto flex max-w-sm items-start justify-center gap-1 sm:max-w-none sm:gap-6"
+          className="mx-auto mt-5 flex max-w-sm items-start justify-center gap-6 sm:gap-10"
           data-reveal
         >
           <Bloque valor={r.dias} label="Días" />
-          <span className="mt-3 h-8 w-px bg-olive-300/60 sm:mt-4 sm:h-10" />
           <Bloque valor={r.horas} label="Horas" />
-          <span className="mt-3 h-8 w-px bg-olive-300/60 sm:mt-4 sm:h-10" />
-          <Bloque valor={r.minutos} label="Min" />
-          <span className="mt-3 h-8 w-px bg-olive-300/60 sm:mt-4 sm:h-10" />
-          <Bloque valor={r.segundos} label="Seg" />
+          <Bloque valor={r.minutos} label="Minutos" />
         </div>
       )}
 
-      <p className="mt-10 font-serif text-lg italic text-ink/60" data-reveal>
-        para el {BODA.fechaLarga}
+      <p
+        className="mt-8 font-serif text-[0.8rem] uppercase tracking-[0.22em] text-ink/60"
+        data-reveal
+      >
+        Para nuestro gran día
       </p>
     </section>
   )

@@ -5,10 +5,19 @@ import { BODA } from '@/lib/config'
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-olive-700 py-16 text-center text-cream">
+    <footer className="relative bg-white py-16 text-center" id="footer">
       <div className="section flex flex-col items-center">
-        {/* El sello M&S como marca de cierre */}
-        <div className="w-24 opacity-90" data-reveal>
+        {/* Mensaje de cierre en versalitas espaciadas, como la papelería fina. */}
+        <p
+          className="max-w-sm font-serif text-[clamp(0.82rem,3vw,0.95rem)] uppercase leading-relaxed tracking-[0.18em] text-ink/75"
+          data-reveal
+        >
+          Con mucho cariño, agradeceremos nos confirme su asistencia antes del{' '}
+          {BODA.rsvpDeadline}.
+        </p>
+
+        {/* Firma: sello M&S + nombres en script + fecha. */}
+        <div className="mt-12 w-16 opacity-90" data-reveal>
           <Image
             src="/sello.png"
             alt={`Monograma ${BODA.novios.monograma}`}
@@ -18,21 +27,18 @@ export default function Footer() {
           />
         </div>
 
-        <p className="mt-8 font-serif text-2xl font-light italic" data-reveal>
-          Gracias por ser parte de nuestra historia
+        <p
+          className="mt-5 font-script text-[clamp(2.4rem,11vw,3.25rem)] leading-none text-olive-700"
+          data-reveal
+        >
+          {BODA.novios.ella} &amp; {BODA.novios.el}
         </p>
 
-        <p className="mt-6 font-serif text-3xl font-light" data-reveal>
-          {BODA.novios.ella} <span className="text-cream/60">&amp;</span>{' '}
-          {BODA.novios.el}
-        </p>
-
-        <p className="mt-4 font-sans text-[0.65rem] uppercase tracking-overline text-cream/60" data-reveal>
+        <p
+          className="mt-5 font-serif text-[0.65rem] uppercase tracking-[0.2em] text-olive-600/70"
+          data-reveal
+        >
           {BODA.fechaDisplay} · {BODA.ciudad}
-        </p>
-
-        <p className="mt-8 font-sans text-sm text-cream/70" data-reveal>
-          {BODA.hashtag}
         </p>
       </div>
     </footer>
