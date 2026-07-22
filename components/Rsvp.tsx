@@ -56,7 +56,7 @@ export default function Rsvp() {
   }
 
   return (
-    <section className="relative py-16" id="rsvp">
+    <section className="relative pb-6 pt-10" id="rsvp">
       <div className="pointer-events-none absolute inset-0 bg-olive-50/60" />
       <div className="section relative text-center">
         <h2

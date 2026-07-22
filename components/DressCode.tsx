@@ -1,42 +1,59 @@
 'use client'
 
-import { BODA } from '@/lib/config'
-import { Words } from './useScrollFx'
+import Image from 'next/image'
 
+/**
+ * Dress Code — collage de dos capas superpuestas (tarjeta de nota + cartela).
+ *
+ * Las posiciones van en % dentro de un contenedor con aspect-ratio fijo, así el
+ * arreglo se mantiene proporcional a cualquier tamaño (mobile se ve igual que
+ * desktop, solo cambia la caja: ~5/4 en mobile, ~3/2 en desktop).
+ *
+ * Motion — se integra con el sistema del sitio (useScrollFx, GSAP + ScrollTrigger,
+ * que es la capa correcta para reveals ligados al scroll según wedding-invite-motion;
+ * Framer Motion queda reservado para hover/estado). El contenedor lleva
+ * [data-reveal-stagger]: escalona sus hijos directos en orden de DOM
+ * (cartela → tarjeta) con fade + y. Cada capa aísla su transform de posición
+ * (rotación / centrado) en un wrapper interno para no competir con el transform
+ * que anima GSAP. prefers-reduced-motion: solo opacidad, sin desplazamiento.
+ */
 export default function DressCode() {
-  const { titulo, detalle, swatches, evitar } = BODA.dressCode
-
   return (
-    <section className="section py-16 text-center" id="dress-code">
-      <h2
-        className="font-serif text-[clamp(2rem,6vw,3.25rem)] font-light text-olive-800"
-        data-reveal-words
+    <section className="section bg-cream pb-6 pt-16" id="dress-code">
+      {/* La composición es visual; damos un título real a lectores de pantalla. */}
+      <h2 className="sr-only">Código de vestimenta</h2>
+
+      <div
+        className="relative mx-auto aspect-[8/5] w-full max-w-md md:aspect-[3/2] md:max-w-lg"
+        data-reveal-stagger
       >
-        <Words text={titulo} />
-      </h2>
+        {/* CAPA 2 — Cartela "Dress Code" (pieza central, encima de la tarjeta).
+            Posicionada por left/top (no translateX) para dejar libre el
+            transform que anima GSAP. */}
+        <div className="absolute left-[30%] top-[38%] z-30 w-[56%] md:top-[40%]">
+          <Image
+            src="/dres.png"
+            alt="Dress Code"
+            width={959}
+            height={671}
+            className="h-auto w-full object-contain"
+            priority
+          />
+        </div>
 
-      <p className="mt-5 font-serif text-xl italic text-ink/75" data-reveal>
-        {detalle}
-      </p>
-
-      <div className="mt-12 flex items-end justify-center gap-5" data-reveal-stagger>
-        {swatches.map((s) => (
-          <div key={s.hex} className="flex flex-col items-center gap-3">
-            <span
-              className="h-14 w-14 rounded-full border border-black/5"
-              style={{ backgroundColor: s.hex }}
-              aria-label={s.nombre}
-            />
-            <span className="font-sans text-[0.65rem] uppercase tracking-overline text-olive-600">
-              {s.nombre}
-            </span>
+        {/* CAPA 1 — Tarjeta de nota (arriba-izquierda). La rotación vive en el
+            wrapper interno; el externo lo anima GSAP sin romper el giro. */}
+        <div className="absolute left-[3%] top-[3%] z-20 w-[54%]">
+          <div className="rotate-[-4deg] rounded-sm border border-olive-700/20 bg-cream px-5 py-6 text-center sm:px-6 sm:py-7">
+            <p className="font-serif text-[clamp(0.72rem,2.7vw,0.98rem)] font-semibold uppercase leading-snug tracking-wide text-ink">
+              Formal de noche.
+            </p>
+            <p className="mt-1.5 font-serif text-[clamp(0.7rem,2.6vw,0.95rem)] leading-snug text-ink/85">
+              Caballeros con traje, damas con vestido largo.
+            </p>
           </div>
-        ))}
+        </div>
       </div>
-
-      <p className="mx-auto mt-10 max-w-sm font-sans text-sm text-ink/55" data-reveal>
-        {evitar}
-      </p>
     </section>
   )
 }
