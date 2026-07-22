@@ -6,7 +6,7 @@ import { Words } from './useScrollFx'
 
 export default function Historia() {
   return (
-    <section className="relative py-28" id="historia">
+    <section className="relative py-16" id="historia">
       {/* Banda full-bleed con parallax botánico usando el liner del sobre */}
       <div className="relative mb-20 h-[42vh] w-full overflow-hidden">
         <div className="absolute inset-0 scale-110" data-parallax>

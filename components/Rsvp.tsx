@@ -56,12 +56,9 @@ export default function Rsvp() {
   }
 
   return (
-    <section className="relative py-28" id="rsvp">
+    <section className="relative py-16" id="rsvp">
       <div className="pointer-events-none absolute inset-0 bg-olive-50/60" />
       <div className="section relative text-center">
-        <p className="overline mb-6" data-reveal>
-          Confirma tu asistencia
-        </p>
         <h2
           className="font-serif text-[clamp(2rem,6vw,3.25rem)] font-light text-olive-800"
           data-reveal-words

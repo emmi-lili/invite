@@ -71,11 +71,7 @@ export default function Countdown() {
   if (!mounted) return <div className="h-40" />
 
   return (
-    <section className="section py-28 text-center" id="countdown">
-      <p className="overline mb-6" data-reveal>
-        Cuenta regresiva
-      </p>
-
+    <section className="section py-16 text-center" id="countdown">
       {llego ? (
         <p
           className="font-serif text-4xl font-light italic text-olive-700"

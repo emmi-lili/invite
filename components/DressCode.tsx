@@ -7,10 +7,7 @@ export default function DressCode() {
   const { titulo, detalle, swatches, evitar } = BODA.dressCode
 
   return (
-    <section className="section py-28 text-center" id="dress-code">
-      <p className="overline mb-6" data-reveal>
-        Código de vestimenta
-      </p>
+    <section className="section py-16 text-center" id="dress-code">
       <h2
         className="font-serif text-[clamp(2rem,6vw,3.25rem)] font-light text-olive-800"
         data-reveal-words

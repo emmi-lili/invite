@@ -45,6 +45,10 @@ export const BODA = {
     nombre: 'Lima, Perú',
     lat: -12.0464,
     lng: -77.0428,
+    // URL que abre el botón "Ubicación" en Google Maps.
+    // PLACEHOLDER: reemplaza por el link real del venue (ej. https://maps.app.goo.gl/XXXX).
+    // Si lo dejas vacío, el botón usa las coordenadas lat/lng de arriba como respaldo.
+    mapsUrl: '',
   },
 
   dressCode: {

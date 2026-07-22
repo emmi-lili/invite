@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Cormorant_Garamond, Inter } from 'next/font/google'
+import { Cormorant_Garamond, Inter, Pinyon_Script } from 'next/font/google'
 import './globals.css'
 import SmoothScroll from '@/components/SmoothScroll'
 import { BODA } from '@/lib/config'
@@ -8,6 +8,14 @@ const serif = Cormorant_Garamond({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600'],
   variable: '--font-serif',
+  display: 'swap',
+})
+
+// Script solo para iniciales / nombres — nunca para cuerpo.
+const script = Pinyon_Script({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-script',
   display: 'swap',
 })
 
@@ -52,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className={`${serif.variable} ${sans.variable}`}>
+    <html lang="es" className={`${serif.variable} ${sans.variable} ${script.variable}`}>
       <body className="font-sans antialiased">
         <SmoothScroll>{children}</SmoothScroll>
       </body>

@@ -7,10 +7,7 @@ export default function Regalos() {
   const { titulo, mensaje, url, ctaLabel } = BODA.regalos
 
   return (
-    <section className="section py-28 text-center" id="regalos">
-      <p className="overline mb-6" data-reveal>
-        Con cariño
-      </p>
+    <section className="section py-16 text-center" id="regalos">
       <h2
         className="font-serif text-[clamp(2rem,6vw,3.25rem)] font-light text-olive-800"
         data-reveal-words

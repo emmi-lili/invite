@@ -5,7 +5,7 @@ import { BODA } from '@/lib/config'
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-olive-700 py-24 text-center text-cream">
+    <footer className="relative overflow-hidden bg-olive-700 py-16 text-center text-cream">
       <div className="section flex flex-col items-center">
         {/* El sello M&S como marca de cierre */}
         <div className="w-24 opacity-90" data-reveal>
