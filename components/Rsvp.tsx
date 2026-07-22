@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { BODA, MAX_ASISTENTES } from '@/lib/config'
 import { supabase, supabaseConfigurado } from '@/lib/supabase'
-import { Words } from './useScrollFx'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 type Estado = 'idle' | 'enviando' | 'confirmado' | 'error'
@@ -59,13 +58,7 @@ export default function Rsvp() {
     <section className="relative pb-6 pt-10" id="rsvp">
       <div className="pointer-events-none absolute inset-0 bg-olive-50/60" />
       <div className="section relative text-center">
-        <h2
-          className="font-serif text-[clamp(2rem,6vw,3.25rem)] font-light text-olive-800"
-          data-reveal-words
-        >
-          <Words text="RSVP" />
-        </h2>
-        <p className="mx-auto mt-4 max-w-sm font-serif text-lg italic text-ink/70" data-reveal>
+        <p className="mx-auto max-w-sm font-serif text-lg italic text-ink/70" data-reveal>
           Por favor confirma antes del {BODA.rsvpDeadline}.
         </p>
 

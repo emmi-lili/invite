@@ -43,8 +43,14 @@ export default function DressCode() {
 
         {/* CAPA 1 — Tarjeta de nota (arriba-izquierda). La rotación vive en el
             wrapper interno; el externo lo anima GSAP sin romper el giro. */}
-        <div className="absolute left-[3%] top-[3%] z-20 w-[54%]">
-          <div className="rotate-[-4deg] rounded-sm border border-olive-700/20 bg-cream px-5 py-6 text-center sm:px-6 sm:py-7">
+        <div className="absolute left-[3%] top-[3%] z-20 w-[54%] [perspective:900px]">
+          <div
+            className="rounded-sm border border-olive-700/15 bg-cream px-5 py-6 text-center [transform:rotate(-4deg)_rotateX(7deg)] sm:px-6 sm:py-7"
+            style={{
+              boxShadow:
+                '0 1px 2px rgba(45,45,22,0.05), 0 10px 20px -10px rgba(45,45,22,0.22), 0 26px 44px -22px rgba(45,45,22,0.30)',
+            }}
+          >
             <p className="font-serif text-[clamp(0.72rem,2.7vw,0.98rem)] font-semibold uppercase leading-snug tracking-wide text-ink">
               Formal de noche.
             </p>

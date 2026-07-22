@@ -8,7 +8,6 @@ import DressCode from '@/components/DressCode'
 import Rsvp from '@/components/Rsvp'
 import Regalos from '@/components/Regalos'
 import Footer from '@/components/Footer'
-import FloatingCta from '@/components/FloatingCta'
 
 export default function Page() {
   const root = useScrollFx()
@@ -24,7 +23,6 @@ export default function Page() {
         <Regalos />
         <Footer />
       </main>
-      <FloatingCta />
     </>
   )
 }

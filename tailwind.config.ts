@@ -23,7 +23,7 @@ const config: Config = {
           900: '#2f2d16',
           950: '#1c1b0d',
         },
-        cream: '#f7f3ea', // fondo real, nunca #fff
+        cream: '#ffffff', // fondo del sitio (blanco)
         ink: '#2b2820', // texto, nunca #000
         sepia: '#a08e79', // acento botánico del liner del sobre
         gold: '#c9a961', // metálico, uso < 5%
