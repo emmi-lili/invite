@@ -40,10 +40,10 @@ export default function Rsvp() {
 
     try {
       if (!supabaseConfigurado || !supabase) {
-        // Sin Supabase configurado: no rompemos la experiencia, avisamos claro.
-        throw new Error(
-          'El formulario aún no está conectado. Configura Supabase en .env.local.'
-        )
+        // Modo demo: no persiste en ningún lado, solo simula el envío exitoso.
+        await new Promise((r) => setTimeout(r, 700))
+        setEstado('confirmado')
+        return
       }
       const { error } = await supabase.from('confirmaciones').insert(payload)
       if (error) throw error
@@ -64,30 +64,21 @@ export default function Rsvp() {
           Por favor confirma antes del {BODA.rsvpDeadline}.
         </p>
 
-        {/* Escena del sobre: pared interna (detrás) · carta · panel frontal (delante). */}
-        <div className="relative mx-auto mt-12 w-full max-w-[400px]" data-reveal>
-          {/* 1 · Pared interna del sobre, visible por la abertura en V */}
-          <svg
-            className="absolute inset-x-0 bottom-0 z-0 h-36 w-full"
-            viewBox="0 0 400 200"
-            preserveAspectRatio="none"
-            aria-hidden="true"
+        {/* Formulario dentro de una tarjeta glassmorphism con sombra 3D
+            (perspectiva en el wrapper; el glass + tilt viven en la tarjeta,
+            así el data-reveal de GSAP no compite con el backdrop-filter). */}
+        <div className="mx-auto mt-10 w-full max-w-md [perspective:1200px]" data-reveal>
+          <div
+            className="glass rounded-[1.6rem] px-6 py-9 [transform:rotateX(5deg)] sm:px-8"
+            style={{
+              boxShadow:
+                '0 2px 4px rgba(45,45,22,0.06), 0 14px 26px -12px rgba(45,45,22,0.22), 0 44px 70px -30px rgba(45,45,22,0.32)',
+            }}
           >
-            <rect x="0" y="0" width="400" height="200" fill="#2f2d16" />
-          </svg>
-
-          {/* 2 · La carta emerge del sobre al entrar en viewport */}
-          <motion.div
-            initial={{ y: 54, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 1.1, ease: EASE }}
-            className="relative z-10 mx-auto w-[84%] rounded-[3px] border border-olive-200 bg-white px-6 pb-40 pt-7 shadow-[0_2px_6px_rgba(45,45,22,0.08),0_20px_44px_-16px_rgba(45,45,22,0.30)]"
-          >
-            <h3 className="mb-6 font-serif text-2xl font-light text-olive-800">
-              Confirmación de asistencia
-            </h3>
-            <AnimatePresence mode="wait">
+          <h3 className="mb-8 text-center font-serif text-2xl font-light text-olive-800">
+            Confirmación de asistencia
+          </h3>
+          <AnimatePresence mode="wait">
               {estado === 'confirmado' ? (
                 <motion.div
                   key="ok"
@@ -242,40 +233,7 @@ export default function Rsvp() {
                 </motion.form>
               )}
             </AnimatePresence>
-          </motion.div>
-
-          {/* 3 · Panel frontal del sobre: tapa el borde inferior de la carta
-              (efecto "insertada"). La abertura en V deja ver la pared interna. */}
-          <svg
-            className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-36 w-full"
-            viewBox="0 0 400 200"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <defs>
-              <linearGradient id="sobreFront" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stopColor="#65632f" />
-                <stop offset="1" stopColor="#403e22" />
-              </linearGradient>
-            </defs>
-            <path d="M0,60 L200,130 L400,60 L400,200 L0,200 Z" fill="url(#sobreFront)" />
-            <path
-              d="M0,60 L200,130 L400,60"
-              fill="none"
-              stroke="#403e22"
-              strokeWidth="2.5"
-              opacity="0.5"
-            />
-            <line
-              x1="200"
-              y1="130"
-              x2="200"
-              y2="200"
-              stroke="#403e22"
-              strokeWidth="1.5"
-              opacity="0.3"
-            />
-          </svg>
+          </div>
         </div>
       </div>
     </section>

@@ -57,7 +57,7 @@ export default function Hero() {
           onClick={abrir}
           disabled={!cerrado}
           aria-label="Abrir la invitación"
-          className={`relative mx-auto block w-[92vw] max-w-[440px] outline-none ${
+          className={`relative mx-auto block w-[94vw] max-w-[560px] outline-none ${
             cerrado ? 'cursor-pointer' : 'cursor-default'
           }`}
         >
@@ -75,7 +75,7 @@ export default function Hero() {
                 width={500}
                 height={500}
                 priority
-                sizes="(max-width: 480px) 92vw, 440px"
+                sizes="(max-width: 600px) 94vw, 560px"
                 className="h-auto w-full select-none drop-shadow-[0_24px_50px_rgba(45,45,22,0.16)]"
               />
             </motion.div>
@@ -137,7 +137,7 @@ export default function Hero() {
           </div>
 
           {/* Reserva el saliente de la viñeta por debajo del sobre */}
-          <div className="h-[40vw] max-h-[192px]" />
+          <div className="h-[41vw] max-h-[244px]" />
         </button>
 
         {/* "Toca para abrir" → se reemplaza por la fecha al abrir */}
