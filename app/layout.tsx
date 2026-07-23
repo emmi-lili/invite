@@ -62,11 +62,16 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${serif.variable} ${sans.variable} ${script.variable}`}>
       <body className="font-sans antialiased">
-        {/* Fondo de toda la página: textura fija, cover (sin estirar ni distorsionar). */}
+        {/* Fondo de toda la página: superficie casi blanca y limpia, como el
+            flat-lay de la referencia. La profundidad la dan las sombras de las
+            tarjetas, no el fondo (sin colores ni textura marcada). */}
         <div
           aria-hidden
-          className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/fondo2.jpg')" }}
+          className="fixed inset-0 -z-10"
+          style={{
+            background:
+              'radial-gradient(125% 90% at 50% 25%, #ffffff 0%, #fbfaf8 55%, #f6f5f1 100%)',
+          }}
         />
         <SmoothScroll>{children}</SmoothScroll>
       </body>

@@ -37,20 +37,6 @@ export default function Itinerario() {
       id="itinerario"
       data-section="eventos"
     >
-      {/* Tinte muy tenue (deja ver el fondo de la página; da algo de contraste al cristal) */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-olive-100/25 via-transparent to-olive-200/25"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -left-16 top-10 h-72 w-72 rounded-full bg-olive-300/40 blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-olive-400/25 blur-3xl"
-      />
-
       <div className="section relative">
         {/* Encabezado único: iniciales en Pinyon Script, resto en Cormorant */}
         <h2

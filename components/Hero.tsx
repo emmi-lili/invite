@@ -50,12 +50,6 @@ export default function Hero() {
       style={{ minHeight: '100svh' }}
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center"
     >
-      {/* Halo suave (deja ver el fondo de la página detrás) */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-24 left-1/2 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-olive-100/30 blur-3xl"
-      />
-
       <div className="relative z-10 flex flex-col items-center">
         {/* Escena: sobre + viñeta + sello */}
         <button
