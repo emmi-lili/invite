@@ -62,6 +62,12 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${serif.variable} ${sans.variable} ${script.variable}`}>
       <body className="font-sans antialiased">
+        {/* Fondo de toda la página: textura fija, cover (sin estirar ni distorsionar). */}
+        <div
+          aria-hidden
+          className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/fondo2.jpg')" }}
+        />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

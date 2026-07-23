@@ -7,7 +7,7 @@ export default function Regalos() {
   const { mensaje, url } = BODA.regalos
 
   return (
-    <section className="section pb-24 pt-4 text-center" id="regalos">
+    <section className="section pb-32 pt-4 text-center" id="regalos">
       {/* Tarjeta de papelería sellada + insignia circular "Regalos" (como la
           referencia). El wrapper lleva la perspectiva y el data-reveal (GSAP
           anima su transform sin chocar con el tilt 3D de la tarjeta interna). */}
@@ -44,10 +44,13 @@ export default function Regalos() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Ver nuestra lista de regalos"
-          className="absolute -bottom-16 right-2 z-10 flex h-28 w-28 items-center justify-center rounded-full bg-olive-800 shadow-[0_16px_34px_-8px_rgba(45,45,22,0.5)] transition-transform duration-300 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive-700 sm:right-6 sm:h-32 sm:w-32"
+          className="absolute -bottom-24 right-2 z-10 flex h-28 w-28 flex-col items-center justify-center rounded-full bg-olive-800 shadow-[0_16px_34px_-8px_rgba(45,45,22,0.5)] transition-transform duration-300 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive-700 sm:right-6 sm:h-32 sm:w-32"
         >
-          <span className="font-script text-4xl leading-none text-cream sm:text-5xl">
+          <span className="font-script text-2xl leading-none text-cream sm:text-3xl">
             Regalos
+          </span>
+          <span className="mt-1.5 font-sans text-[0.5rem] uppercase tracking-[0.15em] text-cream/60 sm:text-[0.55rem]">
+            dar click aquí
           </span>
         </a>
       </div>

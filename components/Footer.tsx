@@ -5,7 +5,7 @@ import { BODA } from '@/lib/config'
 
 export default function Footer() {
   return (
-    <footer className="relative bg-white py-16 text-center" id="footer">
+    <footer className="relative py-16 text-center" id="footer">
       <div className="section flex flex-col items-center">
         {/* Mensaje de cierre en versalitas espaciadas, como la papelería fina. */}
         <p

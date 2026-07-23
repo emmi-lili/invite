@@ -37,10 +37,10 @@ export default function Itinerario() {
       id="itinerario"
       data-section="eventos"
     >
-      {/* Fondo suave para que el blur del cristal tenga contra qué difuminar */}
+      {/* Tinte muy tenue (deja ver el fondo de la página; da algo de contraste al cristal) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-olive-100 via-cream to-olive-200/60"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-olive-100/25 via-transparent to-olive-200/25"
       />
       <div
         aria-hidden

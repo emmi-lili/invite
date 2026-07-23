@@ -19,7 +19,7 @@ import Image from 'next/image'
  */
 export default function DressCode() {
   return (
-    <section className="section bg-cream pb-6 pt-16" id="dress-code">
+    <section className="section pb-6 pt-16" id="dress-code">
       {/* La composición es visual; damos un título real a lectores de pantalla. */}
       <h2 className="sr-only">Código de vestimenta</h2>
 
@@ -52,7 +52,7 @@ export default function DressCode() {
             }}
           >
             <p className="font-serif text-[clamp(0.72rem,2.7vw,0.98rem)] font-semibold uppercase leading-snug tracking-wide text-ink">
-              Formal de noche.
+              Formal
             </p>
             <p className="mt-1.5 font-serif text-[clamp(0.7rem,2.6vw,0.95rem)] leading-snug text-ink/85">
               Caballeros con traje, damas con vestido largo.

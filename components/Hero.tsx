@@ -50,11 +50,10 @@ export default function Hero() {
       style={{ minHeight: '100svh' }}
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center"
     >
-      {/* Fondo suave */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-olive-50 via-cream to-cream" />
+      {/* Halo suave (deja ver el fondo de la página detrás) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-24 left-1/2 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-olive-100/40 blur-3xl"
+        className="pointer-events-none absolute -top-24 left-1/2 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-olive-100/30 blur-3xl"
       />
 
       <div className="relative z-10 flex flex-col items-center">
@@ -64,7 +63,7 @@ export default function Hero() {
           onClick={abrir}
           disabled={!cerrado}
           aria-label="Abrir la invitación"
-          className={`relative mx-auto block w-[88vw] max-w-[380px] outline-none ${
+          className={`relative mx-auto block w-[92vw] max-w-[440px] outline-none ${
             cerrado ? 'cursor-pointer' : 'cursor-default'
           }`}
         >
@@ -82,7 +81,7 @@ export default function Hero() {
                 width={500}
                 height={500}
                 priority
-                sizes="(max-width: 432px) 88vw, 380px"
+                sizes="(max-width: 480px) 92vw, 440px"
                 className="h-auto w-full select-none drop-shadow-[0_24px_50px_rgba(45,45,22,0.16)]"
               />
             </motion.div>
@@ -144,7 +143,7 @@ export default function Hero() {
           </div>
 
           {/* Reserva el saliente de la viñeta por debajo del sobre */}
-          <div className="h-[38.5vw] max-h-[166px]" />
+          <div className="h-[40vw] max-h-[192px]" />
         </button>
 
         {/* "Toca para abrir" → se reemplaza por la fecha al abrir */}

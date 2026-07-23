@@ -56,8 +56,6 @@ export default function Rsvp() {
 
   return (
     <section className="relative overflow-hidden pb-10 pt-14" id="rsvp">
-      <div className="pointer-events-none absolute inset-0 bg-olive-50/50" />
-
       <div className="section relative">
         <p
           className="mx-auto max-w-sm text-center font-serif text-lg italic text-ink/70"
